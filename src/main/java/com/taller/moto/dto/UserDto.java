@@ -1,14 +1,11 @@
-package com.taller.moto.models;
-
-import jakarta.persistence.*;
+package com.taller.moto.dto;
 
 import java.util.List;
 
-@Entity
-public class Users {
+import com.taller.moto.models.Bike;
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+public class UserDto {
+
     Long id;
 
     private String name;
@@ -21,13 +18,12 @@ public class Users {
 
     private String document;
 
-    @OneToMany(mappedBy = "users", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private List<Bike> bike;
 
-    public Users() {
+    public UserDto() {
     }
 
-    public Users(String document, String phoneNumber, String password, String email, String name) {
+    public UserDto(String document, String phoneNumber, String password, String email, String name) {
         this.document = document;
         this.phoneNumber = phoneNumber;
         this.password = password;
@@ -35,7 +31,7 @@ public class Users {
         this.name = name;
     }
 
-    public Users(String name, String email, String password, String phoneNumber, String document, List<Bike> bike) {
+    public UserDto(String name, String email, String password, String phoneNumber, String document, List<Bike> bike) {
         this.name = name;
         this.email = email;
         this.password = password;
@@ -44,7 +40,7 @@ public class Users {
         this.bike = bike;
     }
 
-    public Users(Long id, String name, String email, String password, String phoneNumber, String document,
+    public UserDto(Long id, String name, String email, String password, String phoneNumber, String document,
             List<Bike> bike) {
         this.id = id;
         this.name = name;
@@ -110,4 +106,5 @@ public class Users {
     public void setBike(List<Bike> bike) {
         this.bike = bike;
     }
+
 }

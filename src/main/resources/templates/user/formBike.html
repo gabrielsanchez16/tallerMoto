@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body th:object="${BikeDto}">
+    <h1>Formulario de registro de Usuario</h1>
+    <form th:action="@{/user/{document}/addbike(document=${user.document})}"  method="post">
+
+        <label for="">Placa:</label>
+        <input type="text" th:field="*{plateNumber}">
+
+        <label for="">Modelo:</label>
+        <input type="text" th:field="*{model}">
+
+        <label for="">Color:</label>
+        <input type="text" th:field="*{color}">
+
+        <label for="">Marca:</label>
+        <input type="text" th:field="*{brand}">
+
+        <button type="submit">Registrar</button>
+    </form>
+</body>
+</html>

@@ -1,12 +1,10 @@
-package com.taller.moto.models;
+package com.taller.moto.dto;
 
-import jakarta.persistence.*;
+import com.taller.moto.models.Order;
+import com.taller.moto.models.Users;
 
-@Entity
-public class Bike {
+public class BikeDto {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     Long id;
 
     private String plateNumber;
@@ -17,16 +15,14 @@ public class Bike {
 
     private String brand;
 
-    @ManyToOne
     private Users users;
 
-    @OneToOne
     private Order order;
 
-    public Bike() {
+    public BikeDto() {
     }
 
-    public Bike(String plateNumber, String model, String color, String brand, Users user, Order orderB) {
+    public BikeDto(String plateNumber, String model, String color, String brand, Users user, Order orderB) {
         this.plateNumber = plateNumber;
         this.model = model;
         this.color = color;
@@ -35,7 +31,14 @@ public class Bike {
         this.order = orderB;
     }
 
-    public Bike(Long id, String plateNumber, String model, String color, String brand, Users user, Order orderB) {
+    public BikeDto(String plateNumber, String model, String color, String brand) {
+        this.plateNumber = plateNumber;
+        this.model = model;
+        this.color = color;
+        this.brand = brand;
+    }
+
+    public BikeDto(Long id, String plateNumber, String model, String color, String brand, Users user, Order orderB) {
         this.id = id;
         this.plateNumber = plateNumber;
         this.model = model;
@@ -43,13 +46,6 @@ public class Bike {
         this.brand = brand;
         this.users = user;
         this.order = orderB;
-    }
-
-    public Bike(String plateNumber, String model, String color, String brand) {
-        this.plateNumber = plateNumber;
-        this.model = model;
-        this.color = color;
-        this.brand = brand;
     }
 
     public Long getId() {
@@ -107,4 +103,5 @@ public class Bike {
     public void setOrderB(Order orderB) {
         this.order = orderB;
     }
+
 }
